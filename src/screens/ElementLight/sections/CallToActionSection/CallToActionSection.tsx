@@ -69,12 +69,12 @@ export const CallToActionSection = (): JSX.Element => {
         />
       </div>
 
-      <div className="container mx-auto flex flex-col lg:flex-row items-start gap-16 max-w-6xl relative z-10">
+      <div className="container mx-auto max-w-6xl relative z-10 px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="w-full"
+          className="flex flex-col lg:flex-row items-start gap-16"
         >
           {/* Left side image */}
           <motion.div variants={imageVariants} className="relative w-full lg:w-1/2 group">

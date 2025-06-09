@@ -1,8 +1,17 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../../../../components/ui/button";
 
 export const VisionSection = (): JSX.Element => {
+  const [activeNav, setActiveNav] = useState("home");
+
+  const navItems = [
+    { id: "home", label: "Home" },
+    { id: "catalogue", label: "Catalogue" },
+    { id: "about", label: "About Us" },
+    { id: "contact", label: "Contact Us" }
+  ];
+
   return (
     <motion.header 
       initial={{ y: -100, opacity: 0 }}
@@ -20,31 +29,55 @@ export const VisionSection = (): JSX.Element => {
         </div>
       </motion.div>
 
-      <motion.div
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
+      {/* Navigation Menu */}
+      <motion.nav 
+        className="flex items-center gap-8"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <Button
-          variant="ghost"
-          className="flex items-center gap-2 p-0 hover:bg-transparent group"
-        >
-          <div className="flex flex-col gap-2">
-            <motion.div 
-              className="w-5 h-[3px] bg-white transition-all duration-300 group-hover:w-6"
-              animate={{ scaleX: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
+        {navItems.map((item, index) => (
+          <motion.button
+            key={item.id}
+            onClick={() => setActiveNav(item.id)}
+            className={`relative font-['Poppins',Helvetica] font-medium text-[14px] leading-[18px] transition-all duration-300 ${
+              activeNav === item.id ? "text-white" : "text-gray-300 hover:text-white"
+            }`}
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              duration: 0.5, 
+              delay: 0.3 + index * 0.1,
+              type: "spring",
+              stiffness: 300
+            }}
+          >
+            {item.label}
+            
+            {/* Active indicator */}
+            <AnimatePresence>
+              {activeNav === item.id && (
+                <motion.div
+                  className="absolute -bottom-2 left-0 right-0 h-0.5 bg-white"
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  exit={{ scaleX: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+              )}
+            </AnimatePresence>
+
+            {/* Hover effect */}
+            <motion.div
+              className="absolute inset-0 bg-white/10 rounded-md opacity-0"
+              whileHover={{ opacity: 1 }}
+              transition={{ duration: 0.2 }}
             />
-            <motion.div 
-              className="w-5 h-[3px] bg-white transition-all duration-300 group-hover:w-6"
-              animate={{ scaleX: [1, 1.2, 1] }}
-              transition={{ duration: 2, repeat: Infinity, delay: 0.2 }}
-            />
-          </div>
-          <span className="font-['Poppins',Helvetica] font-medium text-white text-[13px] leading-[16.9px] group-hover:text-gray-200 transition-colors">
-            Menu
-          </span>
-        </Button>
-      </motion.div>
+          </motion.button>
+        ))}
+      </motion.nav>
     </motion.header>
   );
 };
