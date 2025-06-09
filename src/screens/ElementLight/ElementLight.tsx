@@ -10,6 +10,7 @@ import { ServicesSection } from "./sections/ServicesSection/ServicesSection";
 import { TeamSection } from "./sections/TeamSection";
 import { UniqueFeaturesSection } from "./sections/UniqueFeaturesSection";
 import { VisionSection } from "./sections/VisionSection";
+import { ContactUsPage } from "./pages/ContactUsPage";
 
 export const ElementLight = (): JSX.Element => {
   return (
@@ -30,27 +31,7 @@ export const ElementLight = (): JSX.Element => {
         <ServicesSection />
         <FooterSection />
         <UniqueFeaturesSection />
-
-        {/* Copyright Section */}
-        <motion.div 
-          className="w-full py-10 bg-black"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <div className="max-w-7xl mx-auto px-4 flex justify-center">
-            <motion.div 
-              className="[font-family:'Roboto',Helvetica] font-normal text-white text-xs text-center tracking-[1.80px] leading-[16.8px]"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              © COPYRIGHTS TESSERA GRANITO 2020.
-              <br />
-              DESIGN AND DEVELOPED BY ROEX DESIGN.
-            </motion.div>
-          </div>
-        </motion.div>
+        <ContactUsPage />
       </div>
     </motion.div>
   );
