@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { MapPinIcon, PhoneIcon, MailIcon, ArrowLeftIcon } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export const ContactUsPage = (): JSX.Element => {
@@ -94,73 +94,35 @@ export const ContactUsPage = (): JSX.Element => {
         />
       </div>
 
-      {/* Header with Navigation */}
+      {/* Header with back button */}
       <motion.header 
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full h-24 flex items-center justify-between px-12 bg-transparent relative z-50"
       >
-        <motion.div 
-          className="flex items-center gap-4"
-          whileHover={{ scale: 1.05 }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          <Button
+        <div className="flex items-center gap-6">
+          <motion.button
             onClick={() => navigate("/")}
-            variant="outline"
-            size="icon"
-            className="w-10 h-10 rounded-full border-white/30 bg-transparent hover:bg-white/10 hover:border-white transition-all duration-300"
+            className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
+            whileHover={{ scale: 1.05, x: -5 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <ArrowLeftIcon className="h-5 w-5 text-white" />
-          </Button>
-          <div className="font-['Poppins',Helvetica] font-extrabold text-white text-[28px] leading-[36.4px] cursor-pointer">
-            Tessera
-          </div>
-        </motion.div>
-
-        <motion.nav 
-          className="flex items-center gap-8"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          {[
-            { label: "Home", path: "/" },
-            { label: "Catalogue", path: "/catalogue" },
-            { label: "About Us", path: "/about" },
-            { label: "Contact Us", path: "/contact-us", active: true }
-          ].map((item, index) => (
-            <motion.button
-              key={item.label}
-              onClick={() => navigate(item.path)}
-              className={`relative font-['Poppins',Helvetica] font-medium text-[14px] leading-[18px] transition-all duration-300 ${
-                item.active ? "text-white" : "text-gray-300 hover:text-white"
-              }`}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.5, 
-                delay: 0.3 + index * 0.1,
-                type: "spring",
-                stiffness: 300
-              }}
-            >
-              {item.label}
-              
-              {item.active && (
-                <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-0.5 bg-white"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
-                />
-              )}
-            </motion.button>
-          ))}
-        </motion.nav>
+            <ArrowLeftIcon className="w-5 h-5" />
+            <span className="font-['Poppins',Helvetica] font-medium text-[14px]">Back to Home</span>
+          </motion.button>
+          
+          <motion.div 
+            className="relative h-9 cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            onClick={() => navigate("/")}
+          >
+            <div className="font-['Poppins',Helvetica] font-extrabold text-white text-[28px] leading-[36.4px]">
+              Tessera
+            </div>
+          </motion.div>
+        </div>
       </motion.header>
 
       {/* Main Content */}
@@ -173,27 +135,6 @@ export const ContactUsPage = (): JSX.Element => {
           >
             {/* Page Header */}
             <motion.div variants={itemVariants} className="text-center mb-16">
-              <motion.div className="flex items-center justify-center gap-4 mb-6">
-                <motion.div
-                  className="w-[60px] h-px bg-white"
-                  initial={{ width: 0 }}
-                  animate={isVisible ? { width: 60 } : { width: 0 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                />
-                <motion.span 
-                  className="font-['Poppins',Helvetica] font-normal text-white text-[13px] tracking-[3px]"
-                  whileHover={{ scale: 1.1, color: "#f0f0f0" }}
-                >
-                  GET IN TOUCH
-                </motion.span>
-                <motion.div
-                  className="w-[60px] h-px bg-white"
-                  initial={{ width: 0 }}
-                  animate={isVisible ? { width: 60 } : { width: 0 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                />
-              </motion.div>
-              
               <motion.h1 
                 className="font-['Poppins',Helvetica] font-bold text-white text-[48px] leading-[60px] mb-4"
                 whileHover={{ 
@@ -362,7 +303,7 @@ export const ContactUsPage = (): JSX.Element => {
                 <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg h-full">
                   <CardContent className="p-0 h-full">
                     <motion.div 
-                      className="w-full h-full min-h-[600px] bg-gray-900 rounded-lg overflow-hidden relative"
+                      className="w-full h-full min-h-[600px] bg-[#1a1a1a] rounded-lg overflow-hidden relative"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -371,7 +312,7 @@ export const ContactUsPage = (): JSX.Element => {
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5234567890123!2d70.12345678901234!3d22.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDA3JzI0LjQiTiA3MMKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
                         width="100%"
                         height="100%"
-                        style={{ border: 0 }}
+                        style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
