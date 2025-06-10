@@ -10,7 +10,6 @@ import { ServicesSection } from "./sections/ServicesSection/ServicesSection";
 import { TeamSection } from "./sections/TeamSection";
 import { UniqueFeaturesSection } from "./sections/UniqueFeaturesSection";
 import { VisionSection } from "./sections/VisionSection";
-import { ContactUsPage } from "./pages/ContactUsPage";
 
 export const ElementLight = (): JSX.Element => {
   return (
@@ -31,7 +30,6 @@ export const ElementLight = (): JSX.Element => {
         <ServicesSection />
         <FooterSection />
         <UniqueFeaturesSection />
-        <ContactUsPage />
       </div>
     </motion.div>
   );

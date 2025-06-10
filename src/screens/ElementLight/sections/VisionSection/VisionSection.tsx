@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../../../components/ui/button";
 
 export const VisionSection = (): JSX.Element => {
   const [activeNav, setActiveNav] = useState("home");
+  const navigate = useNavigate();
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "catalogue", label: "Catalogue" },
-    { id: "about", label: "About Us" },
-    { id: "contact", label: "Contact Us" }
+    { id: "home", label: "Home", path: "/" },
+    { id: "catalogue", label: "Catalogue", path: "/catalogue" },
+    { id: "about", label: "About Us", path: "/about" },
+    { id: "contact", label: "Contact Us", path: "/contact-us" }
   ];
+
+  const handleNavClick = (item: typeof navItems[0]) => {
+    setActiveNav(item.id);
+    navigate(item.path);
+  };
 
   return (
     <motion.header 
@@ -39,7 +46,7 @@ export const VisionSection = (): JSX.Element => {
         {navItems.map((item, index) => (
           <motion.button
             key={item.id}
-            onClick={() => setActiveNav(item.id)}
+            onClick={() => handleNavClick(item)}
             className={`relative font-['Poppins',Helvetica] font-medium text-[14px] leading-[18px] transition-all duration-300 ${
               activeNav === item.id ? "text-white" : "text-gray-300 hover:text-white"
             }`}
