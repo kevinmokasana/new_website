@@ -61,7 +61,7 @@ export const ServicesSection = (): JSX.Element => {
         />
       </div>
 
-      <div className="max-w-[1140px] mx-auto relative z-10">
+      <div className="max-w-[1140px] mx-auto relative z-10 px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -80,7 +80,7 @@ export const ServicesSection = (): JSX.Element => {
                 className="font-['Poppins',Helvetica] font-normal text-white text-[13px] tracking-[3.00px]"
                 whileHover={{ scale: 1.1, color: "#f0f0f0" }}
               >
-                WHAT WE OFFER
+                PREMIUM FINISHES
               </motion.span>
             </div>
 
@@ -90,24 +90,24 @@ export const ServicesSection = (): JSX.Element => {
                 textShadow: "0 0 20px rgba(255,255,255,0.5)"
               }}
             >
-              Finish We Provide
+              Luxury Finish Collection
             </motion.h2>
 
             <motion.p 
               className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[15px] leading-[30px] mt-6 hover:text-[#d0d0d0] transition-colors duration-300"
               whileHover={{ x: 5 }}
             >
-              Many of the surface coverings we provide are offered in a choice of
-              up to seven finishes, with each one possessing its own particular
-              aesthetic and practical qualities.
+              Discover our extensive range of premium finishes, each meticulously crafted to bring 
+              unique aesthetic and functional qualities to your space. From contemporary high-gloss 
+              to timeless rustic textures, find the perfect finish for your vision.
             </motion.p>
           </motion.div>
 
           {/* Content section */}
           <div className="flex flex-wrap gap-6 mt-8">
             {/* Left side - Finish types */}
-            <motion.div variants={itemVariants} className="w-full md:w-[550px]">
-              <div className="mt-8 ml-[175px]">
+            <motion.div variants={itemVariants} className="w-full lg:w-[550px]">
+              <div className="mt-8 ml-0 lg:ml-[175px]">
                 {finishTypes.map((finish, index) => (
                   <motion.div
                     key={finish.id}
@@ -150,7 +150,7 @@ export const ServicesSection = (): JSX.Element => {
             </motion.div>
 
             {/* Right side - Images */}
-            <motion.div variants={itemVariants} className="w-full md:w-[550px] relative">
+            <motion.div variants={itemVariants} className="w-full lg:w-[550px] relative">
               {/* Bottom image */}
               <motion.div
                 whileHover={{ scale: 1.02, rotate: 1 }}
@@ -165,6 +165,16 @@ export const ServicesSection = (): JSX.Element => {
                         transition={{ duration: 0.6 }}
                       >
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Overlay text */}
+                        <motion.div 
+                          className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          initial={{ y: 20 }}
+                          whileHover={{ y: 0 }}
+                        >
+                          <h4 className="font-['Poppins',Helvetica] font-semibold text-lg">Premium Collection</h4>
+                          <p className="font-['Roboto',Helvetica] text-sm opacity-80">Luxury Finishes</p>
+                        </motion.div>
                       </motion.div>
                     </div>
                   </CardContent>
@@ -185,21 +195,31 @@ export const ServicesSection = (): JSX.Element => {
                         transition={{ duration: 0.6 }}
                       >
                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        {/* Overlay text */}
+                        <motion.div 
+                          className="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          initial={{ y: 20 }}
+                          whileHover={{ y: 0 }}
+                        >
+                          <h4 className="font-['Poppins',Helvetica] font-semibold text-lg">Marble Effect</h4>
+                          <p className="font-['Roboto',Helvetica] text-sm opacity-80">Natural Beauty</p>
+                        </motion.div>
                       </motion.div>
                     </div>
                   </CardContent>
                 </Card>
               </motion.div>
 
-              {/* Circular overlay with enhanced animation */}
+              {/* Enhanced circular overlay */}
               <motion.div 
-                className="absolute w-[100px] h-[100px] top-[268px] left-[220px] bg-[#111111] rounded-[50px] cursor-pointer"
-                whileHover={{ scale: 1.1 }}
+                className="absolute w-[120px] h-[120px] top-[258px] left-[210px] bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-full cursor-pointer shadow-2xl border border-[#333]"
+                whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.95 }}
                 animate={{
                   boxShadow: [
                     "0 0 0 0 rgba(255,255,255,0.1)",
-                    "0 0 0 10px rgba(255,255,255,0.05)",
+                    "0 0 0 15px rgba(255,255,255,0.05)",
                     "0 0 0 0 rgba(255,255,255,0.1)"
                   ]
                 }}
@@ -210,11 +230,11 @@ export const ServicesSection = (): JSX.Element => {
                 }}
               >
                 <motion.div 
-                  className="relative w-[120px] h-[120px] -top-2.5 -left-2.5 bg-[#ffffff33] rounded-[60px]"
+                  className="relative w-[140px] h-[140px] -top-2.5 -left-2.5 bg-gradient-to-br from-[#ffffff15] to-transparent rounded-full"
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 >
-                  <div className="relative w-[90px] h-[46px] top-[37px] left-[15px]">
+                  <div className="relative w-[90px] h-[46px] top-[47px] left-[25px]">
                     <div className="relative w-[35px] h-[46px] left-7">
                       <motion.div 
                         className="absolute w-[19px] h-[21px] top-1 left-1 bg-[url(/group-5.png)] bg-[100%_100%]"
@@ -235,6 +255,16 @@ export const ServicesSection = (): JSX.Element => {
                       <div className="absolute w-[17px] h-4 top-[9px] left-[9px] bg-[url(/group-9.png)] bg-[100%_100%]" />
                     </div>
                   </div>
+                </motion.div>
+                
+                {/* Center text */}
+                <motion.div 
+                  className="absolute inset-0 flex items-center justify-center"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <span className="font-['Poppins',Helvetica] font-semibold text-white text-xs text-center">
+                    360°<br/>VIEW
+                  </span>
                 </motion.div>
               </motion.div>
             </motion.div>

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { MapPinIcon, PhoneIcon, MailIcon, ArrowLeftIcon } from "lucide-react";
+import { MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export const ContactUsPage = (): JSX.Element => {
   const { ref, isVisible } = useScrollAnimation(0.3);
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -94,36 +94,8 @@ export const ContactUsPage = (): JSX.Element => {
         />
       </div>
 
-      {/* Header with back button */}
-      <motion.header 
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full h-24 flex items-center justify-between px-12 bg-transparent relative z-50"
-      >
-        <div className="flex items-center gap-6">
-          <motion.button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors"
-            whileHover={{ scale: 1.05, x: -5 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ArrowLeftIcon className="w-5 h-5" />
-            <span className="font-['Poppins',Helvetica] font-medium text-[14px]">Back to Home</span>
-          </motion.button>
-          
-          <motion.div 
-            className="relative h-9 cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-            onClick={() => navigate("/")}
-          >
-            <div className="font-['Poppins',Helvetica] font-extrabold text-white text-[28px] leading-[36.4px]">
-              Tessera
-            </div>
-          </motion.div>
-        </div>
-      </motion.header>
+      {/* Header */}
+      <Header />
 
       {/* Main Content */}
       <section ref={ref} className="w-full py-20 relative z-10">
@@ -380,6 +352,9 @@ export const ContactUsPage = (): JSX.Element => {
           </motion.div>
         </div>
       </section>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };

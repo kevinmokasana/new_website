@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Header } from "../../components/layout/Header";
+import { Footer } from "../../components/layout/Footer";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { FeaturesSection } from "./sections/FeaturesSection";
 import { FooterSection } from "./sections/FooterSection/FooterSection";
@@ -8,8 +10,6 @@ import { ImageGallerySection } from "./sections/ImageGallerySection";
 import { ProductShowcaseSection } from "./sections/ProductShowcaseSection";
 import { ServicesSection } from "./sections/ServicesSection/ServicesSection";
 import { TeamSection } from "./sections/TeamSection";
-import { UniqueFeaturesSection } from "./sections/UniqueFeaturesSection";
-import { VisionSection } from "./sections/VisionSection";
 
 export const ElementLight = (): JSX.Element => {
   return (
@@ -20,7 +20,7 @@ export const ElementLight = (): JSX.Element => {
       transition={{ duration: 1 }}
     >
       <div className="bg-[#090909] overflow-hidden w-full relative">
-        <VisionSection />
+        <Header />
         <FeaturesSection />
         <HeroSection />
         <CallToActionSection />
@@ -29,7 +29,7 @@ export const ElementLight = (): JSX.Element => {
         <TeamSection />
         <ServicesSection />
         <FooterSection />
-        <UniqueFeaturesSection />
+        <Footer />
       </div>
     </motion.div>
   );

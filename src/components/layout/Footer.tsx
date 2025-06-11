@@ -8,9 +8,9 @@ import {
 } from "lucide-react";
 import React from "react";
 import { motion } from "framer-motion";
-import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
+import { useScrollAnimation } from "../../hooks/useScrollAnimation";
 
-export const UniqueFeaturesSection = (): JSX.Element => {
+export const Footer = (): JSX.Element => {
   const { ref, isVisible } = useScrollAnimation(0.3);
 
   const socialIcons = [
