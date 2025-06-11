@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPinIcon, PhoneIcon, MailIcon } from "lucide-react";
+import { MapPinIcon, PhoneIcon, MailIcon, SendIcon, UserIcon, MessageSquareIcon } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Header } from "../components/layout/Header";
@@ -34,18 +34,24 @@ export const ContactUsPage = (): JSX.Element => {
   const contactInfo = [
     {
       Icon: MapPinIcon,
-      title: "Address",
-      content: "Survey No. 171/172, Bh. Tekza Ceramica, Sartanpar Road,\nRatavirda Village, Wankaner - 363621, Dist. Morbi,\nGujarat, INDIA."
+      title: "Corporate Office",
+      subtitle: "Visit Our Headquarters",
+      content: "IBC-413, NH 8A, Lakhdirpur, Morbi-363642,\nGujarat, India.",
+      color: "from-blue-500 to-blue-600"
     },
     {
       Icon: PhoneIcon,
-      title: "Phone",
-      content: "+91 95862 38772\n+91 90990 90129"
+      title: "Let's Talk",
+      subtitle: "Call Us Anytime",
+      content: "+91 95372 55155\n+91 98798 32324",
+      color: "from-green-500 to-green-600"
     },
     {
       Icon: MailIcon,
-      title: "Email",
-      content: "info@tesseragranito.com"
+      title: "Email Us",
+      subtitle: "Send Us a Message",
+      content: "sales@tilescape.in",
+      color: "from-purple-500 to-purple-600"
     }
   ];
 
@@ -106,42 +112,62 @@ export const ContactUsPage = (): JSX.Element => {
             animate={isVisible ? "visible" : "hidden"}
           >
             {/* Page Header */}
-            <motion.div variants={itemVariants} className="text-center mb-16">
+            <motion.div variants={itemVariants} className="text-center mb-20">
+              <motion.div
+                className="inline-flex items-center gap-4 mb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                <span className="font-['Poppins',Helvetica] font-normal text-white text-[13px] tracking-[3px] uppercase">
+                  Get In Touch
+                </span>
+                <div className="w-12 h-px bg-gradient-to-r from-white via-transparent to-transparent"></div>
+              </motion.div>
+              
               <motion.h1 
-                className="font-['Poppins',Helvetica] font-bold text-white text-[48px] leading-[60px] mb-4"
+                className="font-['Poppins',Helvetica] font-bold text-white text-[48px] md:text-[64px] leading-[1.1] mb-6"
                 whileHover={{ 
-                  textShadow: "0 0 20px rgba(255,255,255,0.3)"
+                  textShadow: "0 0 30px rgba(255,255,255,0.3)"
                 }}
               >
-                Contact Us
+                Contact <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Us</span>
               </motion.h1>
+              
               <motion.p 
                 className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[18px] leading-[28px] max-w-2xl mx-auto"
                 whileHover={{ color: "#d0d0d0" }}
               >
-                Get in touch with us for any inquiries about our premium ceramic tiles and services
+                Ready to transform your space? Let's discuss your vision and bring it to life with our premium ceramic solutions.
               </motion.p>
             </motion.div>
 
             {/* Contact Info Cards */}
-            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05, y: -10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg hover:shadow-xl hover:border-[#2a2a2a] transition-all duration-300 group">
-                    <CardContent className="p-8 text-center">
+                  <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl hover:shadow-3xl hover:border-[#2a2a2a] transition-all duration-500 group overflow-hidden relative">
+                    <div className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                    <CardContent className="p-8 text-center relative z-10">
                       <motion.div
-                        className="w-16 h-16 bg-[#1a1a1a] rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-[#2a2a2a] transition-colors"
-                        whileHover={{ rotate: 5 }}
+                        className={`w-20 h-20 bg-gradient-to-br ${info.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                        whileHover={{ rotate: 5, scale: 1.1 }}
+                        transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <info.Icon className="w-8 h-8 text-white" />
+                        <info.Icon className="w-10 h-10 text-white" />
                       </motion.div>
-                      <h3 className="font-['Poppins',Helvetica] font-semibold text-white text-[20px] leading-[26px] mb-4">
+                      
+                      <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[20px] leading-[26px] mb-2">
                         {info.title}
                       </h3>
+                      
+                      <p className="font-['Poppins',Helvetica] font-medium text-[#888] text-[14px] mb-4 uppercase tracking-wider">
+                        {info.subtitle}
+                      </p>
+                      
                       <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[15px] leading-[24px] whitespace-pre-line group-hover:text-[#d0d0d0] transition-colors">
                         {info.content}
                       </p>
@@ -152,52 +178,52 @@ export const ContactUsPage = (): JSX.Element => {
             </motion.div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Contact Form */}
               <motion.div variants={itemVariants}>
-                <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg">
-                  <CardContent className="p-8">
-                    <motion.h2 
-                      className="font-['Poppins',Helvetica] font-bold text-white text-[32px] leading-[42px] mb-8"
-                      whileHover={{ 
-                        textShadow: "0 0 10px rgba(255,255,255,0.3)"
-                      }}
-                    >
-                      Get in Touch
-                    </motion.h2>
+                <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl overflow-hidden">
+                  <CardContent className="p-10">
+                    <motion.div className="mb-8">
+                      <h2 className="font-['Poppins',Helvetica] font-bold text-white text-[32px] leading-[42px] mb-4">
+                        Send us a <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Message</span>
+                      </h2>
+                      <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px]">
+                        Fill out the form below and we'll get back to you within 24 hours.
+                      </p>
+                    </motion.div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-8">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <motion.div
+                          className="relative group"
                           whileHover={{ scale: 1.02 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <label className="block font-['Poppins',Helvetica] font-medium text-white text-[14px] mb-2">
-                            NAME
-                          </label>
+                          <UserIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#666] group-hover:text-white transition-colors" />
                           <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleInputChange}
-                            className="w-full px-0 py-3 border-0 border-b-2 border-[#333] bg-transparent text-white text-[16px] focus:outline-none focus:border-white transition-colors"
+                            placeholder="Your Name"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                             required
                           />
                         </motion.div>
 
                         <motion.div
+                          className="relative group"
                           whileHover={{ scale: 1.02 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <label className="block font-['Poppins',Helvetica] font-medium text-white text-[14px] mb-2">
-                            EMAIL
-                          </label>
+                          <MailIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#666] group-hover:text-white transition-colors" />
                           <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="w-full px-0 py-3 border-0 border-b-2 border-[#333] bg-transparent text-white text-[16px] focus:outline-none focus:border-white transition-colors"
+                            placeholder="Your Email"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                             required
                           />
                         </motion.div>
@@ -205,51 +231,50 @@ export const ContactUsPage = (): JSX.Element => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <motion.div
+                          className="relative group"
                           whileHover={{ scale: 1.02 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <label className="block font-['Poppins',Helvetica] font-medium text-white text-[14px] mb-2">
-                            PHONE
-                          </label>
+                          <PhoneIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#666] group-hover:text-white transition-colors" />
                           <input
                             type="tel"
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="w-full px-0 py-3 border-0 border-b-2 border-[#333] bg-transparent text-white text-[16px] focus:outline-none focus:border-white transition-colors"
+                            placeholder="Phone Number"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                           />
                         </motion.div>
 
                         <motion.div
+                          className="relative group"
                           whileHover={{ scale: 1.02 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <label className="block font-['Poppins',Helvetica] font-medium text-white text-[14px] mb-2">
-                            SUBJECT
-                          </label>
+                          <MessageSquareIcon className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-[#666] group-hover:text-white transition-colors" />
                           <input
                             type="text"
                             name="subject"
                             value={formData.subject}
                             onChange={handleInputChange}
-                            className="w-full px-0 py-3 border-0 border-b-2 border-[#333] bg-transparent text-white text-[16px] focus:outline-none focus:border-white transition-colors"
+                            placeholder="Subject"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                           />
                         </motion.div>
                       </div>
 
                       <motion.div
+                        className="relative group"
                         whileHover={{ scale: 1.02 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <label className="block font-['Poppins',Helvetica] font-medium text-white text-[14px] mb-2">
-                          MESSAGE
-                        </label>
                         <textarea
                           name="message"
                           value={formData.message}
                           onChange={handleInputChange}
                           rows={6}
-                          className="w-full px-0 py-3 border-0 border-b-2 border-[#333] bg-transparent text-white text-[16px] focus:outline-none focus:border-white transition-colors resize-none"
+                          placeholder="Tell us about your project..."
+                          className="w-full px-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 resize-none placeholder-[#666]"
                           required
                         />
                       </motion.div>
@@ -260,8 +285,9 @@ export const ContactUsPage = (): JSX.Element => {
                       >
                         <Button
                           type="submit"
-                          className="w-full bg-[#1a1a1a] hover:bg-[#2a2a2a] text-white font-['Poppins',Helvetica] font-medium text-[16px] py-4 rounded-none border border-[#333] hover:border-white transition-all duration-300"
+                          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-['Poppins',Helvetica] font-semibold text-[16px] py-4 rounded-xl border-0 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                         >
+                          <SendIcon className="w-5 h-5" />
                           Send Message
                         </Button>
                       </motion.div>
@@ -270,83 +296,126 @@ export const ContactUsPage = (): JSX.Element => {
                 </Card>
               </motion.div>
 
-              {/* Map Section */}
+              {/* Enhanced Map Section */}
               <motion.div variants={itemVariants}>
-                <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-lg h-full">
+                <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl h-full overflow-hidden">
                   <CardContent className="p-0 h-full">
                     <motion.div 
-                      className="w-full h-full min-h-[600px] bg-[#1a1a1a] rounded-lg overflow-hidden relative"
+                      className="w-full h-full min-h-[700px] bg-[#1a1a1a] rounded-lg overflow-hidden relative"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {/* Embedded Google Map */}
-                      <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3691.5234567890123!2d70.12345678901234!3d22.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDA3JzI0LjQiTiA3MMKwMDcnMjQuNCJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-                        width="100%"
-                        height="100%"
-                        style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }}
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        title="Tessera Granito Location"
-                        className="absolute inset-0"
-                      />
-                      
-                      {/* Map overlay with company info */}
-                      <motion.div 
-                        className="absolute top-4 left-4 bg-[#0a0a0a]/95 backdrop-blur-sm p-4 rounded-lg shadow-lg max-w-xs border border-[#1a1a1a]"
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
-                      >
-                        <h4 className="font-['Poppins',Helvetica] font-semibold text-white text-[16px] mb-2">
-                          Tessera Granito
-                        </h4>
-                        <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[12px] leading-[18px]">
-                          Survey No. 171/172, Bh. Tekza Ceramica, Sartanpar Road, Ratavirda Village, Wankaner - 363621
-                        </p>
-                        <div className="flex items-center mt-2">
-                          <div className="flex text-yellow-400">
-                            {[...Array(5)].map((_, i) => (
-                              <span key={i} className="text-sm">★</span>
-                            ))}
-                          </div>
-                          <span className="ml-2 text-[#b7b7b7] text-[12px]">160 reviews</span>
+                      {/* Enhanced Map with better styling */}
+                      <div className="w-full h-full relative">
+                        {/* Map placeholder with modern design */}
+                        <div 
+                          className="w-full h-full bg-cover bg-center relative"
+                          style={{
+                            backgroundImage: `url('data:image/svg+xml,${encodeURIComponent(`
+                              <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#333" stroke-width="1"/>
+                                  </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="#1a1a1a"/>
+                                <rect width="100%" height="100%" fill="url(#grid)"/>
+                                <circle cx="400" cy="300" r="8" fill="#3b82f6"/>
+                                <circle cx="400" cy="300" r="20" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
+                                <circle cx="400" cy="300" r="35" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.3"/>
+                              </svg>
+                            `)}`
+                          }}
+                        >
+                          {/* Overlay with company info */}
+                          <motion.div 
+                            className="absolute top-6 left-6 bg-[#0a0a0a]/95 backdrop-blur-sm p-6 rounded-2xl shadow-2xl max-w-sm border border-[#333]"
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.5, duration: 0.6 }}
+                          >
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                              <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[18px]">
+                                Tilescape Surfaces
+                              </h4>
+                            </div>
+                            
+                            <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[13px] leading-[20px] mb-4">
+                              IBC-413, NH 8A, Lakhdirpur, Morbi-363642, Gujarat, India
+                            </p>
+                            
+                            <div className="flex items-center justify-between">
+                              <div className="flex text-yellow-400">
+                                {[...Array(5)].map((_, i) => (
+                                  <span key={i} className="text-sm">★</span>
+                                ))}
+                              </div>
+                              <span className="text-[#b7b7b7] text-[12px]">4.8 (160 reviews)</span>
+                            </div>
+                            
+                            <motion.button
+                              className="mt-4 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-[12px] font-semibold py-2 px-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              Get Directions
+                            </motion.button>
+                          </motion.div>
+
+                          {/* Manufacturing Unit Info */}
+                          <motion.div 
+                            className="absolute bottom-6 right-6 bg-[#0a0a0a]/95 backdrop-blur-sm p-6 rounded-2xl shadow-2xl max-w-sm border border-[#333]"
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.7, duration: 0.6 }}
+                          >
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                              <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[16px]">
+                                Manufacturing Unit
+                              </h4>
+                            </div>
+                            
+                            <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[12px] leading-[18px]">
+                              8-A National Highway, Lakhdirpur Road, Lalpar, Morbi, Gujarat 363642
+                            </p>
+                          </motion.div>
                         </div>
-                      </motion.div>
+                      </div>
                     </motion.div>
                   </CardContent>
                 </Card>
               </motion.div>
             </div>
 
-            {/* Connect with Us Section */}
-            <motion.div variants={itemVariants} className="mt-16 text-center">
-              <h3 className="font-['Poppins',Helvetica] font-semibold text-white text-[24px] leading-[32px] mb-4">
-                Connect with Us
-              </h3>
-              <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px] leading-[24px] mb-8">
-                Follow us on social media for latest updates and inspiration
-              </p>
-              
-              <div className="flex justify-center space-x-6">
-                {[
-                  { name: "Facebook", bg: "#3b5998" },
-                  { name: "Instagram", bg: "#b219af" },
-                  { name: "LinkedIn", bg: "#0077b5" },
-                  { name: "Twitter", bg: "#1da1f2" }
-                ].map((social, index) => (
-                  <motion.div
-                    key={social.name}
-                    className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer text-white font-bold"
-                    style={{ backgroundColor: social.bg }}
-                    whileHover={{ scale: 1.2, rotate: 5, y: -5 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+            {/* Enhanced CTA Section */}
+            <motion.div variants={itemVariants} className="mt-20 text-center">
+              <div className="bg-gradient-to-r from-[#0a0a0a] via-[#111] to-[#0a0a0a] rounded-3xl p-12 border border-[#333]">
+                <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[28px] leading-[36px] mb-4">
+                  Ready to Start Your Project?
+                </h3>
+                <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px] leading-[24px] mb-8 max-w-2xl mx-auto">
+                  Join thousands of satisfied customers who have transformed their spaces with our premium ceramic solutions.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <motion.button
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-['Poppins',Helvetica] font-semibold text-[16px] py-4 px-8 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {social.name[0]}
-                  </motion.div>
-                ))}
+                    Schedule a Consultation
+                  </motion.button>
+                  
+                  <motion.button
+                    className="border border-[#333] text-white font-['Poppins',Helvetica] font-medium text-[16px] py-4 px-8 rounded-xl hover:bg-[#1a1a1a] hover:border-white transition-all duration-300"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Download Catalogue
+                  </motion.button>
+                </div>
               </div>
             </motion.div>
           </motion.div>
