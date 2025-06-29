@@ -36,22 +36,19 @@ export const ContactUsPage = (): JSX.Element => {
       Icon: MapPinIcon,
       title: "Corporate Office",
       subtitle: "Visit Our Headquarters",
-      content: "IBC-413, NH 8A, Lakhdirpur, Morbi-363642,\nGujarat, India.",
-      color: "from-blue-500 to-blue-600"
+      content: "IBC-413, NH 8A, Lakhdirpur, Morbi-363642,\nGujarat, India."
     },
     {
       Icon: PhoneIcon,
       title: "Let's Talk",
       subtitle: "Call Us Anytime",
-      content: "+91 95372 55155\n+91 98798 32324",
-      color: "from-green-500 to-green-600"
+      content: "+91 95372 55155\n+91 98798 32324"
     },
     {
       Icon: MailIcon,
       title: "Email Us",
       subtitle: "Send Us a Message",
-      content: "sales@tilescape.in",
-      color: "from-purple-500 to-purple-600"
+      content: "sales@tilescape.in"
     }
   ];
 
@@ -130,7 +127,7 @@ export const ContactUsPage = (): JSX.Element => {
                   textShadow: "0 0 30px rgba(255,255,255,0.3)"
                 }}
               >
-                Contact <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Us</span>
+                Contact Us
               </motion.h1>
               
               <motion.p 
@@ -150,10 +147,10 @@ export const ContactUsPage = (): JSX.Element => {
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl hover:shadow-3xl hover:border-[#2a2a2a] transition-all duration-500 group overflow-hidden relative">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${info.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <CardContent className="p-8 text-center relative z-10">
                       <motion.div
-                        className={`w-20 h-20 bg-gradient-to-br ${info.color} rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg`}
+                        className="w-20 h-20 bg-[#1a1a1a] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:bg-[#2a2a2a] transition-colors duration-300"
                         whileHover={{ rotate: 5, scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
@@ -185,7 +182,7 @@ export const ContactUsPage = (): JSX.Element => {
                   <CardContent className="p-10">
                     <motion.div className="mb-8">
                       <h2 className="font-['Poppins',Helvetica] font-bold text-white text-[32px] leading-[42px] mb-4">
-                        Send us a <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Message</span>
+                        Send us a Message
                       </h2>
                       <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px]">
                         Fill out the form below and we'll get back to you within 24 hours.
@@ -206,7 +203,7 @@ export const ContactUsPage = (): JSX.Element => {
                             value={formData.name}
                             onChange={handleInputChange}
                             placeholder="Your Name"
-                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-white focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                             required
                           />
                         </motion.div>
@@ -223,7 +220,7 @@ export const ContactUsPage = (): JSX.Element => {
                             value={formData.email}
                             onChange={handleInputChange}
                             placeholder="Your Email"
-                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-white focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                             required
                           />
                         </motion.div>
@@ -242,7 +239,7 @@ export const ContactUsPage = (): JSX.Element => {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="Phone Number"
-                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-white focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                           />
                         </motion.div>
 
@@ -258,7 +255,7 @@ export const ContactUsPage = (): JSX.Element => {
                             value={formData.subject}
                             onChange={handleInputChange}
                             placeholder="Subject"
-                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
+                            className="w-full pl-12 pr-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-white focus:bg-[#151515] transition-all duration-300 placeholder-[#666]"
                           />
                         </motion.div>
                       </div>
@@ -274,7 +271,7 @@ export const ContactUsPage = (): JSX.Element => {
                           onChange={handleInputChange}
                           rows={6}
                           placeholder="Tell us about your project..."
-                          className="w-full px-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-blue-500 focus:bg-[#151515] transition-all duration-300 resize-none placeholder-[#666]"
+                          className="w-full px-4 py-4 bg-[#111] border border-[#333] rounded-xl text-white text-[16px] focus:outline-none focus:border-white focus:bg-[#151515] transition-all duration-300 resize-none placeholder-[#666]"
                           required
                         />
                       </motion.div>
@@ -285,7 +282,7 @@ export const ContactUsPage = (): JSX.Element => {
                       >
                         <Button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-['Poppins',Helvetica] font-semibold text-[16px] py-4 rounded-xl border-0 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+                          className="w-full bg-white hover:bg-gray-200 text-black font-['Poppins',Helvetica] font-semibold text-[16px] py-4 rounded-xl border-0 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                         >
                           <SendIcon className="w-5 h-5" />
                           Send Message
@@ -320,9 +317,9 @@ export const ContactUsPage = (): JSX.Element => {
                                 </defs>
                                 <rect width="100%" height="100%" fill="#1a1a1a"/>
                                 <rect width="100%" height="100%" fill="url(#grid)"/>
-                                <circle cx="400" cy="300" r="8" fill="#3b82f6"/>
-                                <circle cx="400" cy="300" r="20" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
-                                <circle cx="400" cy="300" r="35" fill="none" stroke="#3b82f6" stroke-width="1" opacity="0.3"/>
+                                <circle cx="400" cy="300" r="8" fill="#ffffff"/>
+                                <circle cx="400" cy="300" r="20" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+                                <circle cx="400" cy="300" r="35" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.3"/>
                               </svg>
                             `)}`
                           }}
@@ -335,7 +332,7 @@ export const ContactUsPage = (): JSX.Element => {
                             transition={{ delay: 0.5, duration: 0.6 }}
                           >
                             <div className="flex items-center gap-3 mb-4">
-                              <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                               <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[18px]">
                                 Tilescape Surfaces
                               </h4>
@@ -346,7 +343,7 @@ export const ContactUsPage = (): JSX.Element => {
                             </p>
                             
                             <div className="flex items-center justify-between">
-                              <div className="flex text-yellow-400">
+                              <div className="flex text-white">
                                 {[...Array(5)].map((_, i) => (
                                   <span key={i} className="text-sm">★</span>
                                 ))}
@@ -355,7 +352,7 @@ export const ContactUsPage = (): JSX.Element => {
                             </div>
                             
                             <motion.button
-                              className="mt-4 w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-[12px] font-semibold py-2 px-4 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                              className="mt-4 w-full bg-white text-black text-[12px] font-semibold py-2 px-4 rounded-lg hover:bg-gray-200 transition-all duration-300"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
@@ -371,7 +368,7 @@ export const ContactUsPage = (): JSX.Element => {
                             transition={{ delay: 0.7, duration: 0.6 }}
                           >
                             <div className="flex items-center gap-3 mb-4">
-                              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                              <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
                               <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[16px]">
                                 Manufacturing Unit
                               </h4>
@@ -401,7 +398,7 @@ export const ContactUsPage = (): JSX.Element => {
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <motion.button
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-['Poppins',Helvetica] font-semibold text-[16px] py-4 px-8 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 shadow-lg"
+                    className="bg-white text-black font-['Poppins',Helvetica] font-semibold text-[16px] py-4 px-8 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-lg"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
