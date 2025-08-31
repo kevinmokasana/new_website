@@ -30,7 +30,7 @@ export const FooterSection = (): JSX.Element => {
   };
 
   return (
-    <footer ref={ref} className="w-full py-12 bg-[#070707] flex flex-col items-center justify-center gap-5 relative overflow-hidden">
+    <footer ref={ref} className="w-full py-16 lg:py-20 bg-[#070707] flex flex-col items-center justify-center gap-8 lg:gap-12 relative overflow-hidden">
       {/* Animated background */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
@@ -55,14 +55,14 @@ export const FooterSection = (): JSX.Element => {
         variants={containerVariants}
         initial="hidden"
         animate={isVisible ? "visible" : "hidden"}
-        className="relative z-10"
+        className="relative z-10 text-center px-4"
       >
         <motion.div variants={itemVariants} className="flex items-center justify-center">
-          <h2 className="font-bold text-white text-[40px] font-['Poppins',Helvetica] tracking-normal leading-[60px] text-center">
-            {["Exterior", "&", "interior", "View"].map((word, index) => (
+          <h2 className="font-bold text-white text-[28px] lg:text-[40px] font-['Poppins',Helvetica] tracking-normal leading-[40px] lg:leading-[60px] text-center">
+            {["Discover", "Our", "Premium", "Collection"].map((word, index) => (
               <motion.span
                 key={word}
-                className={`${index === 1 ? "mx-2" : index === 3 ? "ml-2" : ""}`}
+                className={`inline-block ${index < 3 ? "mr-2 lg:mr-3" : ""}`}
                 whileHover={{ 
                   scale: 1.05,
                   textShadow: "0 0 20px rgba(255,255,255,0.5)"
@@ -75,21 +75,21 @@ export const FooterSection = (): JSX.Element => {
           </h2>
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="mt-8">
           <Button
             variant="outline"
-            className="h-12 px-9 border border-white rounded-none bg-transparent hover:bg-transparent relative overflow-hidden group"
+            className="h-12 lg:h-14 px-8 lg:px-12 border border-white rounded-none bg-transparent hover:bg-transparent relative overflow-hidden group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <motion.div 
               className="absolute w-full h-full top-0 left-[-100%] group-hover:left-0 transition-all duration-500"
               style={{
-                background: "linear-gradient(180deg,rgba(28,28,28,1) 0%,rgba(242,41,91,1) 100%)"
+                background: "linear-gradient(180deg,rgba(28,28,28,1) 0%,rgba(255,255,255,0.1) 100%)"
               }}
             />
             <motion.span 
-              className="relative z-10 font-['Poppins',Helvetica] font-normal text-white text-sm text-center tracking-normal leading-[18.2px]"
+              className="relative z-10 font-['Poppins',Helvetica] font-normal text-white text-sm lg:text-base text-center tracking-normal leading-[18.2px]"
               animate={{
                 textShadow: [
                   "0 0 0px rgba(255,255,255,0)",
@@ -103,7 +103,7 @@ export const FooterSection = (): JSX.Element => {
                 ease: "easeInOut"
               }}
             >
-              360° VIEW
+              EXPLORE CATALOGUE
             </motion.span>
           </Button>
         </motion.div>

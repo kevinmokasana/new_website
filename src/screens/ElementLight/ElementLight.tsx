@@ -4,12 +4,13 @@ import { Header } from "../../components/layout/Header";
 import { Footer } from "../../components/layout/Footer";
 import { CallToActionSection } from "./sections/CallToActionSection";
 import { FeaturesSection } from "./sections/FeaturesSection";
-import { FooterSection } from "./sections/FooterSection/FooterSection";
 import { HeroSection } from "./sections/HeroSection";
 import { ImageGallerySection } from "./sections/ImageGallerySection";
 import { ProductShowcaseSection } from "./sections/ProductShowcaseSection";
 import { ServicesSection } from "./sections/ServicesSection/ServicesSection";
 import { TeamSection } from "./sections/TeamSection";
+import { QualitySection } from "./sections/QualitySection";
+import { FooterSection } from "./sections/FooterSection/FooterSection";
 
 export const ElementLight = (): JSX.Element => {
   return (
@@ -27,6 +28,7 @@ export const ElementLight = (): JSX.Element => {
         <ProductShowcaseSection />
         <ImageGallerySection />
         <TeamSection />
+        <QualitySection />
         <ServicesSection />
         <FooterSection />
         <Footer />

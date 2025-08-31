@@ -102,7 +102,7 @@ export const ContactUsPage = (): JSX.Element => {
 
       {/* Main Content */}
       <section ref={ref} className="w-full py-20 relative z-10">
-        <div className="container mx-auto px-6 max-w-7xl">
+        <div className="container mx-auto px-4 lg:px-6 max-w-7xl">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -111,18 +111,18 @@ export const ContactUsPage = (): JSX.Element => {
             {/* Page Header */}
             <motion.div variants={itemVariants} className="text-center mb-20">
               <motion.div
-                className="inline-flex items-center gap-4 mb-6"
+                className="inline-flex items-center gap-2 lg:gap-4 mb-6"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
-                <span className="font-['Poppins',Helvetica] font-normal text-white text-[13px] tracking-[3px] uppercase">
+                <div className="w-8 lg:w-12 h-px bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                <span className="font-['Poppins',Helvetica] font-normal text-white text-[11px] lg:text-[13px] tracking-[2px] lg:tracking-[3px] uppercase">
                   Get In Touch
                 </span>
-                <div className="w-12 h-px bg-gradient-to-r from-white via-transparent to-transparent"></div>
+                <div className="w-8 lg:w-12 h-px bg-gradient-to-r from-white via-transparent to-transparent"></div>
               </motion.div>
               
               <motion.h1 
-                className="font-['Poppins',Helvetica] font-bold text-white text-[48px] md:text-[64px] leading-[1.1] mb-6"
+                className="font-['Poppins',Helvetica] font-bold text-white text-[32px] lg:text-[48px] xl:text-[64px] leading-[1.1] mb-4 lg:mb-6"
                 whileHover={{ 
                   textShadow: "0 0 30px rgba(255,255,255,0.3)"
                 }}
@@ -131,7 +131,7 @@ export const ContactUsPage = (): JSX.Element => {
               </motion.h1>
               
               <motion.p 
-                className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[18px] leading-[28px] max-w-2xl mx-auto"
+                className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px] lg:text-[18px] leading-[24px] lg:leading-[28px] max-w-2xl mx-auto px-4"
                 whileHover={{ color: "#d0d0d0" }}
               >
                 Ready to transform your space? Let's discuss your vision and bring it to life with our premium ceramic solutions.
@@ -139,7 +139,7 @@ export const ContactUsPage = (): JSX.Element => {
             </motion.div>
 
             {/* Contact Info Cards */}
-            <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 lg:mb-20">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={index}
@@ -148,24 +148,24 @@ export const ContactUsPage = (): JSX.Element => {
                 >
                   <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl hover:shadow-3xl hover:border-[#2a2a2a] transition-all duration-500 group overflow-hidden relative">
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <CardContent className="p-8 text-center relative z-10">
+                    <CardContent className="p-6 lg:p-8 text-center relative z-10">
                       <motion.div
-                        className="w-20 h-20 bg-[#1a1a1a] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:bg-[#2a2a2a] transition-colors duration-300"
+                        className="w-16 lg:w-20 h-16 lg:h-20 bg-[#1a1a1a] rounded-2xl flex items-center justify-center mx-auto mb-4 lg:mb-6 shadow-lg group-hover:bg-[#2a2a2a] transition-colors duration-300"
                         whileHover={{ rotate: 5, scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        <info.Icon className="w-10 h-10 text-white" />
+                        <info.Icon className="w-8 lg:w-10 h-8 lg:h-10 text-white" />
                       </motion.div>
                       
-                      <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[20px] leading-[26px] mb-2">
+                      <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[18px] lg:text-[20px] leading-[24px] lg:leading-[26px] mb-2">
                         {info.title}
                       </h3>
                       
-                      <p className="font-['Poppins',Helvetica] font-medium text-[#888] text-[14px] mb-4 uppercase tracking-wider">
+                      <p className="font-['Poppins',Helvetica] font-medium text-[#888] text-[12px] lg:text-[14px] mb-3 lg:mb-4 uppercase tracking-wider">
                         {info.subtitle}
                       </p>
                       
-                      <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[15px] leading-[24px] whitespace-pre-line group-hover:text-[#d0d0d0] transition-colors">
+                      <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[14px] lg:text-[15px] leading-[22px] lg:leading-[24px] whitespace-pre-line group-hover:text-[#d0d0d0] transition-colors">
                         {info.content}
                       </p>
                     </CardContent>
@@ -175,22 +175,22 @@ export const ContactUsPage = (): JSX.Element => {
             </motion.div>
 
             {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
               {/* Contact Form */}
               <motion.div variants={itemVariants}>
                 <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl overflow-hidden">
-                  <CardContent className="p-10">
+                  <CardContent className="p-6 lg:p-10">
                     <motion.div className="mb-8">
-                      <h2 className="font-['Poppins',Helvetica] font-bold text-white text-[32px] leading-[42px] mb-4">
+                      <h2 className="font-['Poppins',Helvetica] font-bold text-white text-[24px] lg:text-[32px] leading-[32px] lg:leading-[42px] mb-4">
                         Send us a Message
                       </h2>
-                      <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px]">
+                      <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[14px] lg:text-[16px]">
                         Fill out the form below and we'll get back to you within 24 hours.
                       </p>
                     </motion.div>
 
                     <form onSubmit={handleSubmit} className="space-y-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                         <motion.div
                           className="relative group"
                           whileHover={{ scale: 1.02 }}
@@ -226,7 +226,7 @@ export const ContactUsPage = (): JSX.Element => {
                         </motion.div>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
                         <motion.div
                           className="relative group"
                           whileHover={{ scale: 1.02 }}
@@ -282,9 +282,9 @@ export const ContactUsPage = (): JSX.Element => {
                       >
                         <Button
                           type="submit"
-                          className="w-full bg-white hover:bg-gray-200 text-black font-['Poppins',Helvetica] font-semibold text-[16px] py-4 rounded-xl border-0 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
+                          className="w-full bg-white hover:bg-gray-200 text-black font-['Poppins',Helvetica] font-semibold text-[14px] lg:text-[16px] py-3 lg:py-4 rounded-xl border-0 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                         >
-                          <SendIcon className="w-5 h-5" />
+                          <SendIcon className="w-4 lg:w-5 h-4 lg:h-5" />
                           Send Message
                         </Button>
                       </motion.div>
@@ -298,7 +298,7 @@ export const ContactUsPage = (): JSX.Element => {
                 <Card className="bg-[#0a0a0a] border border-[#1a1a1a] shadow-2xl h-full overflow-hidden">
                   <CardContent className="p-0 h-full">
                     <motion.div 
-                      className="w-full h-full min-h-[700px] bg-[#1a1a1a] rounded-lg overflow-hidden relative"
+                      className="w-full h-full min-h-[400px] lg:min-h-[700px] bg-[#1a1a1a] rounded-lg overflow-hidden relative"
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -326,19 +326,19 @@ export const ContactUsPage = (): JSX.Element => {
                         >
                           {/* Overlay with company info */}
                           <motion.div 
-                            className="absolute top-6 left-6 bg-[#0a0a0a]/95 backdrop-blur-sm p-6 rounded-2xl shadow-2xl max-w-sm border border-[#333]"
+                            className="absolute top-4 lg:top-6 left-4 lg:left-6 bg-[#0a0a0a]/95 backdrop-blur-sm p-4 lg:p-6 rounded-2xl shadow-2xl max-w-xs lg:max-w-sm border border-[#333]"
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.5, duration: 0.6 }}
                           >
                             <div className="flex items-center gap-3 mb-4">
                               <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                              <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[18px]">
+                              <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[16px] lg:text-[18px]">
                                 Tilescape Surfaces
                               </h4>
                             </div>
                             
-                            <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[13px] leading-[20px] mb-4">
+                            <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[12px] lg:text-[13px] leading-[18px] lg:leading-[20px] mb-4">
                               IBC-413, NH 8A, Lakhdirpur, Morbi-363642, Gujarat, India
                             </p>
                             
@@ -348,7 +348,7 @@ export const ContactUsPage = (): JSX.Element => {
                                   <span key={i} className="text-sm">★</span>
                                 ))}
                               </div>
-                              <span className="text-[#b7b7b7] text-[12px]">4.8 (160 reviews)</span>
+                              <span className="text-[#b7b7b7] text-[11px] lg:text-[12px]">4.8 (160 reviews)</span>
                             </div>
                             
                             <motion.button
@@ -362,19 +362,19 @@ export const ContactUsPage = (): JSX.Element => {
 
                           {/* Manufacturing Unit Info */}
                           <motion.div 
-                            className="absolute bottom-6 right-6 bg-[#0a0a0a]/95 backdrop-blur-sm p-6 rounded-2xl shadow-2xl max-w-sm border border-[#333]"
+                            className="absolute bottom-4 lg:bottom-6 right-4 lg:right-6 bg-[#0a0a0a]/95 backdrop-blur-sm p-4 lg:p-6 rounded-2xl shadow-2xl max-w-xs lg:max-w-sm border border-[#333]"
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.7, duration: 0.6 }}
                           >
                             <div className="flex items-center gap-3 mb-4">
                               <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
-                              <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[16px]">
+                              <h4 className="font-['Poppins',Helvetica] font-bold text-white text-[14px] lg:text-[16px]">
                                 Manufacturing Unit
                               </h4>
                             </div>
                             
-                            <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[12px] leading-[18px]">
+                            <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[11px] lg:text-[12px] leading-[16px] lg:leading-[18px]">
                               8-A National Highway, Lakhdirpur Road, Lalpar, Morbi, Gujarat 363642
                             </p>
                           </motion.div>
@@ -387,18 +387,18 @@ export const ContactUsPage = (): JSX.Element => {
             </div>
 
             {/* Enhanced CTA Section */}
-            <motion.div variants={itemVariants} className="mt-20 text-center">
-              <div className="bg-gradient-to-r from-[#0a0a0a] via-[#111] to-[#0a0a0a] rounded-3xl p-12 border border-[#333]">
-                <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[28px] leading-[36px] mb-4">
+            <motion.div variants={itemVariants} className="mt-16 lg:mt-20 text-center">
+              <div className="bg-gradient-to-r from-[#0a0a0a] via-[#111] to-[#0a0a0a] rounded-2xl lg:rounded-3xl p-8 lg:p-12 border border-[#333]">
+                <h3 className="font-['Poppins',Helvetica] font-bold text-white text-[24px] lg:text-[28px] leading-[32px] lg:leading-[36px] mb-4">
                   Ready to Start Your Project?
                 </h3>
-                <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[16px] leading-[24px] mb-8 max-w-2xl mx-auto">
+                <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[14px] lg:text-[16px] leading-[22px] lg:leading-[24px] mb-6 lg:mb-8 max-w-2xl mx-auto px-4">
                   Join thousands of satisfied customers who have transformed their spaces with our premium ceramic solutions.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center items-center">
                   <motion.button
-                    className="bg-white text-black font-['Poppins',Helvetica] font-semibold text-[16px] py-4 px-8 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-lg"
+                    className="bg-white text-black font-['Poppins',Helvetica] font-semibold text-[14px] lg:text-[16px] py-3 lg:py-4 px-6 lg:px-8 rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-lg w-full sm:w-auto"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -406,7 +406,7 @@ export const ContactUsPage = (): JSX.Element => {
                   </motion.button>
                   
                   <motion.button
-                    className="border border-[#333] text-white font-['Poppins',Helvetica] font-medium text-[16px] py-4 px-8 rounded-xl hover:bg-[#1a1a1a] hover:border-white transition-all duration-300"
+                    className="border border-[#333] text-white font-['Poppins',Helvetica] font-medium text-[14px] lg:text-[16px] py-3 lg:py-4 px-6 lg:px-8 rounded-xl hover:bg-[#1a1a1a] hover:border-white transition-all duration-300 w-full sm:w-auto"
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >

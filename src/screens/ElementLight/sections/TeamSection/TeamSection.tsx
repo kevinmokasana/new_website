@@ -1,11 +1,21 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "../../../../components/ui/card";
-import { Separator } from "../../../../components/ui/separator";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { Button } from "../../../../components/ui/button";
 import { useScrollAnimation } from "../../../../hooks/useScrollAnimation";
+import useEmblaCarousel from 'embla-carousel-react';
 
 export const TeamSection = (): JSX.Element => {
   const { ref, isVisible } = useScrollAnimation(0.3);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ 
+    loop: true,
+    align: 'start',
+    slidesToScroll: 1,
+    breakpoints: {
+      '(min-width: 768px)': { active: false }
+    }
+  });
 
   const featureRows = [
     [
@@ -27,6 +37,11 @@ export const TeamSection = (): JSX.Element => {
       { image: "/safe-png.png", alt: "Safe", title: "Safe & Secure" },
     ],
   ];
+
+  const allFeatures = featureRows.flat();
+
+  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+  const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -64,7 +79,7 @@ export const TeamSection = (): JSX.Element => {
   };
 
   return (
-    <section ref={ref} className="w-full bg-[#090909] py-16 relative overflow-hidden">
+    <section ref={ref} className="w-full bg-[#090909] py-16 lg:py-24 relative overflow-hidden">
       {/* Animated background grid */}
       <div className="absolute inset-0 opacity-5">
         <motion.div
@@ -85,13 +100,13 @@ export const TeamSection = (): JSX.Element => {
         />
       </div>
 
-      <div className="container mx-auto relative z-10">
+      <div className="container mx-auto relative z-10 px-4 lg:px-6">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
         >
-          <motion.div variants={itemVariants} className="mb-16">
+          <motion.div variants={itemVariants} className="mb-12 lg:mb-16">
             <div className="flex items-center gap-4 mb-4">
               <motion.div
                 className="w-[60px] h-px bg-white"
@@ -99,11 +114,11 @@ export const TeamSection = (): JSX.Element => {
                 animate={isVisible ? { width: 60 } : { width: 0 }}
                 transition={{ duration: 1, delay: 0.5 }}
               />
-              <div className="flex gap-4">
+              <div className="flex gap-2 lg:gap-4">
                 {["PRODUCT", "CHARACTERISTICS"].map((word, index) => (
                   <motion.span
                     key={word}
-                    className="font-normal text-white text-[13px] tracking-[3.00px] leading-[13px] font-['Poppins',Helvetica]"
+                    className="font-normal text-white text-[11px] lg:text-[13px] tracking-[2px] lg:tracking-[3.00px] leading-[13px] font-['Poppins',Helvetica]"
                     whileHover={{ scale: 1.1, color: "#f0f0f0" }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -113,11 +128,11 @@ export const TeamSection = (): JSX.Element => {
               </div>
             </div>
 
-            <div className="flex gap-2.5">
+            <div className="flex flex-col lg:flex-row lg:gap-2.5">
               {["Product", "Unique", "Features"].map((word, index) => (
                 <motion.h2
                   key={word}
-                  className="font-bold text-white text-[40px] tracking-[0] leading-[60px] whitespace-nowrap font-['Poppins',Helvetica]"
+                  className="font-bold text-white text-[28px] lg:text-[40px] tracking-[0] leading-[36px] lg:leading-[60px] font-['Poppins',Helvetica]"
                   whileHover={{ 
                     scale: 1.05,
                     textShadow: "0 0 20px rgba(255,255,255,0.5)"
@@ -130,52 +145,108 @@ export const TeamSection = (): JSX.Element => {
             </div>
           </motion.div>
 
-          {featureRows.map((row, rowIndex) => (
-            <motion.div
-              key={`row-${rowIndex}`}
-              variants={itemVariants}
-              className={`grid grid-cols-4 ${rowIndex < featureRows.length - 1 ? "border-b border-[#c8c8c814]" : ""}`}
-            >
-              {row.map((feature, index) => (
-                <motion.div
-                  key={`feature-${rowIndex}-${index}`}
-                  variants={featureVariants}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <Card
-                    className={`bg-transparent border-0 group cursor-pointer ${
-                      index < row.length - 1 ? "border-r border-[#c8c8c814]" : ""
-                    }`}
+          {/* Desktop Grid View */}
+          <div className="hidden md:block">
+            {featureRows.map((row, rowIndex) => (
+              <motion.div
+                key={`row-${rowIndex}`}
+                variants={itemVariants}
+                className={`grid grid-cols-4 ${rowIndex < featureRows.length - 1 ? "border-b border-[#c8c8c814]" : ""}`}
+              >
+                {row.map((feature, index) => (
+                  <motion.div
+                    key={`feature-${rowIndex}-${index}`}
+                    variants={featureVariants}
+                    whileHover={{ scale: 1.05, y: -10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <CardContent className="flex flex-col items-center justify-center h-[285px] p-4 relative">
-                      <motion.div
-                        className="w-[85px] h-[85px] bg-cover bg-center mb-4 filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
-                        style={{ backgroundImage: `url(${feature.image})` }}
-                        aria-label={feature.alt}
-                        whileHover={{ rotate: 5 }}
-                      />
-                      
-                      <motion.h3
-                        className="font-['Poppins',Helvetica] font-medium text-white text-sm text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={{ y: 10 }}
-                        whileHover={{ y: 0 }}
-                      >
-                        {feature.title}
-                      </motion.h3>
+                    <Card
+                      className={`bg-transparent border-0 group cursor-pointer ${
+                        index < row.length - 1 ? "border-r border-[#c8c8c814]" : ""
+                      }`}
+                    >
+                      <CardContent className="flex flex-col items-center justify-center h-[285px] p-4 relative">
+                        <motion.div
+                          className="w-[85px] h-[85px] bg-cover bg-center mb-4 filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+                          style={{ backgroundImage: `url(${feature.image})` }}
+                          aria-label={feature.alt}
+                          whileHover={{ rotate: 5 }}
+                        />
+                        
+                        <motion.h3
+                          className="font-['Poppins',Helvetica] font-medium text-white text-sm text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          initial={{ y: 10 }}
+                          whileHover={{ y: 0 }}
+                        >
+                          {feature.title}
+                        </motion.h3>
 
-                      {/* Hover effect overlay */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
-                        initial={{ scale: 0.8 }}
-                        whileHover={{ scale: 1 }}
-                      />
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          ))}
+                        {/* Hover effect overlay */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
+                          initial={{ scale: 0.8 }}
+                          whileHover={{ scale: 1 }}
+                        />
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile Carousel View */}
+          <div className="md:hidden">
+            <div className="relative">
+              <div className="overflow-hidden" ref={emblaRef}>
+                <div className="flex">
+                  {allFeatures.map((feature, index) => (
+                    <motion.div
+                      key={`mobile-feature-${index}`}
+                      className="flex-[0_0_80%] min-w-0 mr-4"
+                      variants={featureVariants}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    >
+                      <Card className="bg-[#0a0a0a] border border-[#1a1a1a] group cursor-pointer h-full">
+                        <CardContent className="flex flex-col items-center justify-center p-8 text-center">
+                          <motion.div
+                            className="w-[70px] h-[70px] bg-cover bg-center mb-6 filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+                            style={{ backgroundImage: `url(${feature.image})` }}
+                            aria-label={feature.alt}
+                            whileHover={{ rotate: 5, scale: 1.1 }}
+                          />
+                          
+                          <h3 className="font-['Poppins',Helvetica] font-medium text-white text-base text-center group-hover:text-gray-200 transition-colors">
+                            {feature.title}
+                          </h3>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Navigation Buttons */}
+              <Button
+                onClick={scrollPrev}
+                variant="outline"
+                size="icon"
+                className="absolute top-1/2 -left-2 w-10 h-10 rounded-full border border-[#333] bg-[#0a0a0a] hover:bg-[#1a1a1a] hover:border-white transition-all duration-300 transform -translate-y-1/2 z-10"
+              >
+                <ChevronLeftIcon className="h-4 w-4 text-white" />
+              </Button>
+
+              <Button
+                onClick={scrollNext}
+                variant="outline"
+                size="icon"
+                className="absolute top-1/2 -right-2 w-10 h-10 rounded-full border border-[#333] bg-[#0a0a0a] hover:bg-[#1a1a1a] hover:border-white transition-all duration-300 transform -translate-y-1/2 z-10"
+              >
+                <ChevronRightIcon className="h-4 w-4 text-white" />
+              </Button>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

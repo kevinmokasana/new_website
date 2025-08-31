@@ -87,7 +87,7 @@ export const Footer = (): JSX.Element => {
           variants={containerVariants}
           initial="hidden"
           animate={isVisible ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto"
         >
           {/* Company Info */}
           <motion.div variants={itemVariants}>
@@ -96,31 +96,31 @@ export const Footer = (): JSX.Element => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <h3 className="font-['Poppins',Helvetica] font-extrabold text-white text-[32px] leading-[42px] mb-4">
+              <h3 className="font-['Poppins',Helvetica] font-extrabold text-white text-[24px] lg:text-[32px] leading-[32px] lg:leading-[42px] mb-4">
                 Tessera
               </h3>
             </motion.div>
 
             <motion.p 
-              className="font-normal text-[#b7b7b7] text-[16px] leading-[28px] font-['Roboto',Helvetica] hover:text-[#d0d0d0] transition-colors duration-300 mb-8"
+              className="font-normal text-[#b7b7b7] text-[14px] lg:text-[16px] leading-[24px] lg:leading-[28px] font-['Roboto',Helvetica] hover:text-[#d0d0d0] transition-colors duration-300 mb-6 lg:mb-8"
               whileHover={{ x: 5 }}
             >
               Creating dream spaces with luxury ceramic solutions. Experience premium quality tiles with innovative designs and exceptional craftsmanship that transform your vision into reality.
             </motion.p>
 
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 lg:space-x-4 justify-center lg:justify-start">
               {socialIcons.map((item, index) => (
                 <motion.a
                   key={index}
                   href={item.href}
-                  className="w-12 h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300"
+                  className="w-10 lg:w-12 h-10 lg:h-12 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300"
                   style={{ backgroundColor: item.bg }}
                   whileHover={{ scale: 1.2, rotate: 5, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                   transition={{ type: "spring", stiffness: 300 }}
                   title={item.name}
                 >
-                  <item.Icon className="w-6 h-6 text-white" />
+                  <item.Icon className="w-5 lg:w-6 h-5 lg:h-6 text-white" />
                 </motion.a>
               ))}
             </div>
@@ -129,7 +129,7 @@ export const Footer = (): JSX.Element => {
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
             <motion.h4 
-              className="font-['Poppins',Helvetica] font-semibold text-white text-[24px] leading-[32px] mb-8"
+              className="font-['Poppins',Helvetica] font-semibold text-white text-[20px] lg:text-[24px] leading-[28px] lg:leading-[32px] mb-6 lg:mb-8 text-center lg:text-left"
               whileHover={{ 
                 textShadow: "0 0 10px rgba(255,255,255,0.5)"
               }}
@@ -137,25 +137,25 @@ export const Footer = (): JSX.Element => {
               Contact Information
             </motion.h4>
 
-            <div className="space-y-6">
+            <div className="space-y-4 lg:space-y-6">
               {contactInfo.map((info, index) => (
                 <motion.div 
                   key={index} 
-                  className="flex items-start space-x-4 group"
+                  className="flex items-start space-x-3 lg:space-x-4 group"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
                   <motion.div
-                    className="w-10 h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center mt-1 group-hover:bg-[#2a2a2a] transition-colors"
+                    className="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-[#1a1a1a] flex items-center justify-center mt-1 group-hover:bg-[#2a2a2a] transition-colors flex-shrink-0"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
-                    <info.Icon className="w-5 h-5 text-white" />
+                    <info.Icon className="w-4 lg:w-5 h-4 lg:h-5 text-white" />
                   </motion.div>
                   <div className="flex-1">
-                    <h5 className="font-['Poppins',Helvetica] font-medium text-white text-[16px] leading-[22px] mb-2 group-hover:text-gray-200 transition-colors">
+                    <h5 className="font-['Poppins',Helvetica] font-medium text-white text-[15px] lg:text-[16px] leading-[20px] lg:leading-[22px] mb-1 lg:mb-2 group-hover:text-gray-200 transition-colors">
                       {info.title}
                     </h5>
-                    <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[14px] leading-[22px] group-hover:text-[#d0d0d0] transition-colors">
+                    <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[13px] lg:text-[14px] leading-[20px] lg:leading-[22px] group-hover:text-[#d0d0d0] transition-colors">
                       {info.content}
                     </p>
                   </div>
