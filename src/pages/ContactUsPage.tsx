@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPinIcon, PhoneIcon, MailIcon, SendIcon, UserIcon, MessageSquareIcon } from "lucide-react";
+import { MapPinIcon, PhoneIcon, MailIcon, SendIcon, UserIcon, MessageSquareIcon, CheckCircleIcon, AlertCircleIcon } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import { sendContactEmail, initializeEmailJS, type ContactFormData } from "../services/emailService";
 
 export const ContactUsPage = (): JSX.Element => {
   const { ref, isVisible } = useScrollAnimation(0.3);
@@ -17,6 +18,14 @@ export const ContactUsPage = (): JSX.Element => {
     message: ""
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  // Initialize EmailJS on component mount
+  React.useEffect(() => {
+    initializeEmailJS();
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -25,10 +34,35 @@ export const ContactUsPage = (): JSX.Element => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission here
+    
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const success = await sendContactEmail(formData as ContactFormData);
+      
+      if (success) {
+        setSubmitStatus('success');
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: ""
+        });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      // Reset status after 5 seconds
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
   };
 
   const contactInfo = [
@@ -187,6 +221,29 @@ export const ContactUsPage = (): JSX.Element => {
                       <p className="font-['Roboto',Helvetica] font-normal text-[#b7b7b7] text-[14px] lg:text-[16px]">
                         Fill out the form below and we'll get back to you within 24 hours.
                       </p>
+                      
+                      {/* Status Messages */}
+                      {submitStatus === 'success' && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="flex items-center gap-2 p-4 bg-green-900/20 border border-green-500/30 rounded-lg mb-6"
+                        >
+                          <CheckCircleIcon className="w-5 h-5 text-green-400" />
+                          <span className="text-green-400 text-sm">Message sent successfully! We'll get back to you soon.</span>
+                        </motion.div>
+                      )}
+                      
+                      {submitStatus === 'error' && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="flex items-center gap-2 p-4 bg-red-900/20 border border-red-500/30 rounded-lg mb-6"
+                        >
+                          <AlertCircleIcon className="w-5 h-5 text-red-400" />
+                          <span className="text-red-400 text-sm">Failed to send message. Please try again or contact us directly.</span>
+                        </motion.div>
+                      )}
                     </motion.div>
 
                     <form onSubmit={handleSubmit} className="space-y-8">
@@ -282,10 +339,24 @@ export const ContactUsPage = (): JSX.Element => {
                       >
                         <Button
                           type="submit"
+                          disabled={isSubmitting}
                           className="w-full bg-white hover:bg-gray-200 text-black font-['Poppins',Helvetica] font-semibold text-[14px] lg:text-[16px] py-3 lg:py-4 rounded-xl border-0 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center gap-3"
                         >
-                          <SendIcon className="w-4 lg:w-5 h-4 lg:h-5" />
-                          Send Message
+                          {isSubmitting ? (
+                            <>
+                              <motion.div
+                                className="w-4 h-4 border-2 border-black border-t-transparent rounded-full"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                              />
+                              Sending...
+                            </>
+                          ) : (
+                            <>
+                              <SendIcon className="w-4 lg:w-5 h-4 lg:h-5" />
+                              Send Message
+                            </>
+                          )}
                         </Button>
                       </motion.div>
                     </form>

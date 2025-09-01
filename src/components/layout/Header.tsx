@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 export const Header = (): JSX.Element => {
   const [activeNav, setActiveNav] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -97,6 +98,7 @@ export const Header = (): JSX.Element => {
 
       {/* Mobile Menu Button */}
       <motion.button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         className="lg:hidden flex flex-col gap-1 p-2"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -104,33 +106,44 @@ export const Header = (): JSX.Element => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <div className="w-6 h-0.5 bg-white transition-all duration-300"></div>
-        <div className="w-6 h-0.5 bg-white transition-all duration-300"></div>
-        <div className="w-6 h-0.5 bg-white transition-all duration-300"></div>
+        <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
+        <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></div>
+        <div className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
       </motion.button>
 
       {/* Mobile Navigation Menu - Hidden for now, can be implemented later */}
-      <motion.div 
-        className="lg:hidden absolute top-full left-0 w-full bg-[#0a0a0a]/95 backdrop-blur-sm border-t border-[#1a1a1a] hidden"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="flex flex-col p-4 space-y-2">
-          {navItems.map((item) => (
-            <motion.button
-              key={`mobile-${item.id}`}
-              onClick={() => handleNavClick(item)}
-              className={`text-left font-['Poppins',Helvetica] font-medium text-[16px] py-3 px-4 rounded-lg transition-all duration-300 ${
-                activeNav === item.id ? "text-white bg-white/10" : "text-gray-300 hover:text-white hover:bg-white/5"
-              }`}
-              whileHover={{ x: 5 }}
-            >
-              {item.label}
-            </motion.button>
-          ))}
-        </div>
-      </motion.div>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            className="lg:hidden absolute top-full left-0 w-full bg-[#0a0a0a]/95 backdrop-blur-sm border-t border-[#1a1a1a] z-40"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col p-4 space-y-2">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={`mobile-${item.id}`}
+                  onClick={() => {
+                    handleNavClick(item);
+                    setMobileMenuOpen(false);
+                  }}
+                  className={`text-left font-['Poppins',Helvetica] font-medium text-[16px] py-3 px-4 rounded-lg transition-all duration-300 ${
+                    activeNav === item.id ? "text-white bg-white/10" : "text-gray-300 hover:text-white hover:bg-white/5"
+                  }`}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ x: 5 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.header>
   );
 };

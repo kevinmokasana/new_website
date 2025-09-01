@@ -10,6 +10,7 @@ import { ProductShowcaseSection } from "./sections/ProductShowcaseSection";
 import { ServicesSection } from "./sections/ServicesSection/ServicesSection";
 import { TeamSection } from "./sections/TeamSection";
 import { QualitySection } from "./sections/QualitySection";
+import { ApplicationsSection } from "./sections/ApplicationsSection";
 import { FooterSection } from "./sections/FooterSection/FooterSection";
 
 export const ElementLight = (): JSX.Element => {
@@ -28,6 +29,7 @@ export const ElementLight = (): JSX.Element => {
         <ProductShowcaseSection />
         <ImageGallerySection />
         <TeamSection />
+        <ApplicationsSection />
         <QualitySection />
         <ServicesSection />
         <FooterSection />
