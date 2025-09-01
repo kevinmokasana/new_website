@@ -207,6 +207,6 @@ export const QualitySection = (): JSX.Element => {
           </motion.div>
         </motion.div>
       </div>
-    </footer>
+    </section>
   );
 };
