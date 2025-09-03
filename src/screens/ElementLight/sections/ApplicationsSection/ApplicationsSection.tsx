@@ -2,7 +2,7 @@ import React from 'react';
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation';
 import { Building2, Home, Store, Warehouse, Hotel, Briefcase } from 'lucide-react';
 
-const ApplicationsSection: React.FC = () => {
+export const ApplicationsSection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   const applications = [
@@ -124,5 +124,3 @@ const ApplicationsSection: React.FC = () => {
     </section>
   );
 };
-
-export default ApplicationsSection;
