@@ -1,9 +1,9 @@
 import emailjs from '@emailjs/browser';
 
 // EmailJS configuration
-const EMAILJS_SERVICE_ID = 'service_tessera';
-const EMAILJS_TEMPLATE_ID = 'template_contact';
-const EMAILJS_PUBLIC_KEY = 'your_public_key_here';
+const EMAILJS_SERVICE_ID = 'service_tnz1b0e';
+const EMAILJS_TEMPLATE_ID = 'template_kp5pde1';
+const EMAILJS_PUBLIC_KEY = 'vcyY92AhOIUDUZfXA';
 
 export interface ContactFormData {
   name: string;
@@ -21,7 +21,7 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<boole
       phone: formData.phone,
       subject: formData.subject,
       message: formData.message,
-      to_email: 'mokasanakevin@gmail.com',
+      to_email: 'mokasanakevin@gmial.com',
     };
 
     const response = await emailjs.send(
