@@ -11,6 +11,7 @@ export const Header = (): JSX.Element => {
   const navItems = [
     { id: "home", label: "Home", path: "/" },
     { id: "catalogue", label: "Catalogue", path: "/catalogue" },
+    { id: "export", label: "Export", path: "/export" },
     { id: "about", label: "About Us", path: "/about" },
     { id: "contact", label: "Contact Us", path: "/contact-us" }
   ];
